@@ -1,23 +1,18 @@
----
-- hosts: localhost
-  connection: local
-  become: true
-  tasks:
-  - name: Install e/t
-    apt:
-      name: 
-        - sudo
-        - nano
-        - net-tools
-        - nautilus
-        - bat
-        - sshfs
-        - zip
-        - unzip
-        - tree
-        - git
-        - gh
-        - fuse3
-        - wget
+- name: Install e/t
+  apt:
+    name: 
+      - sudo
+      - nano
+      - net-tools
+      - nautilus
+      - bat
+      - sshfs
+      - zip
+      - unzip
+      - tree
+      - git
+      - gh
+      - fuse3
+      - wget
 
 
