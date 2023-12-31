@@ -1,12 +1,10 @@
 - hosts: localhost
   connection: local
   become: true
-  
   tasks:
   - name: Install e/t
     apt:
       name: 
-        pkg:
         - sudo
         - nano
         - net-tools
