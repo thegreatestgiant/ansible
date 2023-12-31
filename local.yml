@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  connection: local 
+  become: true
+
+  pre_tasks:
+    - name: Update Repo's
+      apt:
+        update_cache: yes
+      changed_when: False
+
+  tasks:
+    - include: tasks/pkgs.yml
