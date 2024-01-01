@@ -76,6 +76,7 @@
 
 - name: Add universe repository
   shell: apt-add-repository universe -y
+  changed_when: False
 
 - name: Load fuse kernel module
   modprobe:
