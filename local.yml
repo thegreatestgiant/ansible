@@ -11,9 +11,6 @@
         autoremove: yes 
         autoclean: yes 
       changed_when: False
-      ignore_errors: yes
-      args:
-        warn: false
 
   roles:
     - base

@@ -1,7 +1,6 @@
 - name: Install a gpg to make gh work (I think)
   apt_key:
     url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
-    id: "{{ gpg_key_id }}"
     state: present
 
 - name: Add GitHub CLI repository
