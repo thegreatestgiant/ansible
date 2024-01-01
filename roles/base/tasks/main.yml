@@ -53,7 +53,7 @@
 
 - name: Set TZ
     timezone:
-      name: America/New_York
+      name: "America/New_York"
 
 - name: Install Docker
   shell: bash -c "$(curl -fsSL https://get.docker.com)"
