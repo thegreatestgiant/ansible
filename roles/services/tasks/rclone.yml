@@ -3,35 +3,31 @@
   register: rclone_installed
   ignore_errors: yes
 
-- name: Install rclone
-  block:
-    tasks:
-      - name: Download rclone
-        get_url:
-          url: "https://downloads.rclone.org/rclone-current-linux-{{ lookup('pipe', 'dpkg --print-architecture') }}.zip"
-          dest: /tmp/rc.zip
-        register: rclone_download
+- name: Download rclone
+  get_url:
+    url: "https://downloads.rclone.org/rclone-current-linux-{{ lookup('pipe', 'dpkg --print-architecture') }}.zip"
+    dest: /tmp/rc.zip
+  register: rclone_download
 
-      - name: Extract rclone
-        unarchive:
-          src: /tmp/rc.zip
-          dest: /usr/bin/
-          mode: 0755
-          remote_src: yes
-          match:
-            - '*/rclone'
-          creates: /usr/bin/rclone
-        when: rclone_download|success
+- name: Extract rclone
+  unarchive:
+    src: /tmp/rc.zip
+    dest: /usr/bin/
+    mode: 0755
+    remote_src: yes
+    match:
+      - '*/rclone'
+    creates: /usr/bin/rclone
+  when: rclone_download|success
 
-      - name: Extract rclone man page
-        unarchive:
-          src: /tmp/rc.zip
-          dest: /usr/local/share/man/man1/
-          remote_src: yes
-          match:
-            - '*/rclone.1'
-        when: rclone_download|success
-  when: rclone_installed.rc != 0
+- name: Extract rclone man page
+  unarchive:
+    src: /tmp/rc.zip
+    dest: /usr/local/share/man/man1/
+    remote_src: yes
+    match:
+      - '*/rclone.1'
+  when: rclone_download|success
 
 - name: Create Kavita directory
   path: "{{ user.home }}/Kavita"
