@@ -33,7 +33,7 @@
   when: rclone_installed.rc != 0
 
 - name: Create Kavita directory
-  path: {{ user.home }}/Kavita
+  path: "{{ user.home }}/Kavita"
   state: directory
   mode: 0755
 
