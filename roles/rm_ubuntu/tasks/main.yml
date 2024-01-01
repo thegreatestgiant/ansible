@@ -1,7 +1,6 @@
 ---
 - name: Flush iptables rules
   shell: iptables --flush && iptables -P INPUT ACCEPT && iptables -P OUTPUT ACCEPT && iptables -P FORWARD ACCEPT && netfilter-persistent save -c
-  when: "'ubuntu' in command('id ubuntu')"
 
 - name: Save iptables rules
   command: "netfilter-persistent save -c"
