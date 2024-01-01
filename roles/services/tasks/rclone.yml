@@ -20,7 +20,7 @@
       - '*/rclone'
     creates: /usr/bin/rclone
   when: 
-    - rclone_download.status == 200
+    - rclone_download.status_code == 200
     - rclone_installed.rc != 0
 
 - name: Extract rclone man page
@@ -31,7 +31,7 @@
     match:
       - '*/rclone.1'
   when: 
-    - rclone_download.status == 200
+    - rclone_download.status_code == 200
     - rclone_installed.rc != 0
 
 - name: Create Kavita directory
