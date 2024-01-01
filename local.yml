@@ -6,10 +6,10 @@
   pre_tasks:
     - name: Update Repo's
       apt:
-        update_cache: True
+        update_cache: yes 
         upgrade: yes
-        autoremove: True
-        autoclean: True
+        autoremove: yes 
+        autoclean: yes 
       changed_when: False
 
   roles:
