@@ -15,7 +15,8 @@
   roles:
     # - base
     # - ansible_user
-    - sean_user 
+    # - sean_user 
+    - services
 
 - name: Conditional tasks for localhost
   hosts: localhost

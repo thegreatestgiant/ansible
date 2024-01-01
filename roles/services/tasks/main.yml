@@ -1,0 +1,8 @@
+- include_tasks:
+  with_items:
+    - nvm.yml
+    - go.yml
+    - rclone.yml
+
+- name: Source stuff
+  shell: source /etc/bash.bashrc
