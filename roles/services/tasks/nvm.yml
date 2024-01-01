@@ -1,17 +1,20 @@
 - name: Install nvm
   become_user: "{{ user.name }}"
   shell: >
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash && \
+    export NVM_DIR=\"$nvm_dir\" && \
+    [ -s \"\$NVM_DIR/nvm.sh\" ] && \. \"\$NVM_DIR/nvm.sh\" && \
+    [ -s \"\$NVM_DIR/bash_completion\" ] && \. \"\$NVM_DIR/bash_completion\" && \
   args:
     creates: "{{ user.home }}/.nvm/nvm.sh"
 
-- name: Source new stuff
-  become_user: "{{ user.name }}"
-  command: bash -c "source ~/.bashrc"
-
-- name: Install node
-  become_user: "{{ user.name }}"
-  shell: >
-    nvm install 18
-  args:
-    creates: "{{ user.home }}/.npm"
+# - name: Source new stuff
+#   become_user: "{{ user.name }}"
+#   command: bash -c "source ~/.bashrc"
+#
+# - name: Install node
+#   become_user: "{{ user.name }}"
+#   shell: >
+#     nvm install 18
+#   args:
+#     creates: "{{ user.home }}/.npm"
