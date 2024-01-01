@@ -1,21 +1,28 @@
-- name: Install nvm
-  become_user: "{{ user.name }}"
+---
+- name: Install NVM
   shell: >
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash && \
-    export NVM_DIR="{{ user.home }}" && \
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && \
-    [[ -r $NVM_DIR/bash_completion ]] && \. $NVM_DIR/bash_completion && \
-    nvm install 18
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
   args:
     creates: "{{ user.home }}/.nvm/nvm.sh"
 
-# - name: Source new stuff
-#   become_user: "{{ user.name }}"
-#   command: bash -c "source ~/.bashrc"
-#
-# - name: Install node
-#   become_user: "{{ user.name }}"
-#   shell: >
-#     nvm install 18
+- name: Source NVM script
+  shell: "source {{ user.home }}/.nvm/nvm.sh"
+  args:
+    executable: /bin/bash
+  environment:
+    NVM_DIR: "{{ user.home }}/.nvm"
+
+- name: Install Node.js
+  shell: "nvm install {{ node_version }}"
+  args:
+    executable: /bin/bash
+  environment:
+    NVM_DIR: "{{ user.home }}/.nvm"
+
+# - name: Set default Node.js version
+#   shell: "nvm alias default {{ node_version }}"
 #   args:
-#     creates: "{{ user.home }}/.npm"
+#     executable: /bin/bash
+#   environment:
+#     NVM_DIR: "{{ user.home }}/.nvm"
+#
