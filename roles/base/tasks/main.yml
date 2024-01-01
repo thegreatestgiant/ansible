@@ -61,6 +61,7 @@
   command: "docker --version"
   register: docker_check
   ignore_errors: true
+  changed_when: False
 
 - name: Install Docker
   shell: bash -c "$(curl -fsSL https://get.docker.com)"
@@ -75,7 +76,7 @@
 
 - name: Add universe repository
   apt_repository:
-    repo: "deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} universe"
+    repo: deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} universe
     state: present
 
 - name: Load fuse kernel module
