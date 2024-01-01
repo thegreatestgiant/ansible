@@ -1,8 +1,10 @@
-- include_tasks: gh_stuff.yml
-- include_tasks: pkgs.yml
-- include_tasks: alias.yml
-- include_tasks: docker.yml
-- include_tasks: nvim.yml
+- include_tasks: "{{ items }}"
+  with_items:
+    - gh_stuff.yml
+    - pkgs.yml
+    - alias.yml
+    - docker.yml
+    - nvim.yml
 
 - name: Set TZ
   timezone:
