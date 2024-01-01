@@ -21,6 +21,11 @@
   become: yes
   gather_facts: true
 
+  - name: Check if 'ubuntu' user exists
+    command: id ubuntu
+    ignore_errors: true
+    register: ubuntu_user_check
+
   roles:
     - role: rm_ubuntu
       when: ubuntu_user_check.rc == 0
