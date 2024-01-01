@@ -9,8 +9,7 @@
   changed_when: false
 
 - name: Save iptables rules
-  iptables_persistent:
-    state: saved
+  command: "netfilter-persistent save -c"
   changed_when: false
 
 - name: Remove Snapd
