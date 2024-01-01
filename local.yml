@@ -14,7 +14,8 @@
 
   roles:
     - base
-    - ansible_user
+    # - ansible_user
+    - ssh
 
 - name: Conditional tasks for localhost
   hosts: localhost
