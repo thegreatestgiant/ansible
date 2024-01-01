@@ -1,6 +1,7 @@
 - name: Install a gpg to make gh work (I think)
   apt_key:
     url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
+    id: "{{ gpg_key_id }}"
     state: present
 
 - name: Add GitHub CLI repository
@@ -29,27 +30,28 @@
     state: latest
 
 - name: Insert Alias
-  blockinfile:
+  lineinfile:
     path: /etc/bash.bashrc
-    block: |
-      alias bat='batcat'
-      alias cmatrix='cmatrix -sb'
-      alias i='sudo apt install -y'
-      alias cd..='cd ..'
-      alias ip='curl icanhazip.com'
-      alias ls='ls --color=auto -h'
-      alias l='ls -CFh'
-      alias la='ls -Ah'
-      alias ll='ls -alhF'
-      alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -'
-      alias weather='curl wttr.in'
-      alias zupdate='sudo apt update && sudo apt upgrade -y'
-      alias grep='grep --color=auto'
-      HISTTIMEFORMAT='%Y-%m-%d %T'
-      alias ncdir="cd ~/.config/nvim"
-      alias ncf="nvim ~/.config/nvim/init.lua"
-      alias brc="nvim ~/.bashrc"
-      alias nv="nvim"
+    line: "{{ item }}"
+  with_items:
+    - alias bat='batcat'
+    - alias cmatrix='cmatrix -sb'
+    - alias i='sudo apt install -y'
+    - alias cd..='cd ..'
+    - alias ip='curl icanhazip.com'
+    - alias ls='ls --color=auto -h'
+    - alias l='ls -CFh'
+    - alias la='ls -Ah'
+    - alias ll='ls -alhF'
+    - alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -'
+    - alias weather='curl wttr.in'
+    - alias zupdate='sudo apt update && sudo apt upgrade -y'
+    - alias grep='grep --color=auto'
+    - HISTTIMEFORMAT='%Y-%m-%d %T'
+    - alias ncdir="cd ~/.config/nvim"
+    - alias ncf="nvim ~/.config/nvim/init.lua"
+    - alias brc="nvim ~/.bashrc"
+    - alias nv="nvim"
 
 - name: Set TZ
   timezone:
@@ -67,16 +69,14 @@
 
 - name: Add universe repository
   apt_repository:
-    repo: "deb http://archive.ubuntu.com/ubuntu $(lsb_release -cs) universe"
+    repo: 'deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}universe'
     state: present
-
 
 - name: Load fuse kernel module
   modprobe:
     name: fuse
 
 - name: Create fuse group
-  become: yes
   group:
     name: fuse
     state: present
@@ -85,7 +85,5 @@
   become: yes
   user:
     name: "{{ ansible_user }}"
-    groups: |
-      - fuse
-      - docker
+    groups: ['fuse', 'docker']
     append: yes
