@@ -1,4 +1,4 @@
-- include_tasks: {{ item }}
+- include_tasks: "{{ item }}"
   with_items:
     - nvm.yml
     - go.yml
