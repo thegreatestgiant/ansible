@@ -24,8 +24,6 @@
       - gh
       - fuse3
       - wget
-      - fuse 
-      - libfuse2
     state: present
   changed_when: False
 
@@ -75,21 +73,11 @@
     group: 0
 
 - name: Add universe repository
-  shell: apt-add-repository universe -y
+  shell: apt-add-repository universe -y && apt install libfuse2
   changed_when: False
 
-- name: Load fuse kernel module
-  modprobe:
-    name: fuse
-
-- name: Create fuse group
-  group:
-    name: fuse
-    state: present
-
-- name: Add user to fuse group
-  become: yes
+- name: Add user to docker group
   user:
     name: "{{ ansible_env.USER }}"
-    groups: ['fuse', 'docker']
+    groups: docker 
     append: yes
