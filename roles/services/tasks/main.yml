@@ -5,4 +5,4 @@
     - rclone.yml
 
 - name: Source stuff
-  shell: source /etc/bash.bashrc
+  command: bash -c "source /etc/bash.bashrc"
