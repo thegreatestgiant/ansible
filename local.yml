@@ -21,7 +21,6 @@
   hosts: localhost
   connection: local 
   become: yes
-  gather_facts: true
 
   tasks:
     - name: Check if 'ubuntu' user exists and is unlocked
