@@ -1,16 +1,10 @@
 ---
 - name: Install NVM
-  shell: >
+  script: |
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+    source {{ user.home }}/.nvm/nvm.sh
   args:
     creates: "{{ user.home }}/.nvm/nvm.sh"
-
-- name: Source NVM script
-  shell: "source {{ user.home }}/.nvm/nvm.sh"
-  args:
-    executable: /bin/bash
-  environment:
-    NVM_DIR: "{{ user.home }}/.nvm"
 
 - name: Install Node.js
   shell: "nvm install {{ node_version }}"
