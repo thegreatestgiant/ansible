@@ -27,7 +27,7 @@
       - fuse 
       - libfuse2
     state: present
-    changed_when: false
+    changed_when: False
 
 - name: Insert Alias
   lineinfile:
