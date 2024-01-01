@@ -12,5 +12,5 @@
         autoclean: yes
       changed_when: False
 
-  role:
+  roles:
     - base
