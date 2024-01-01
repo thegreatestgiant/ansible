@@ -14,7 +14,14 @@
 
   roles:
     - base
-    - { role: rm_ubuntu, when: "'ubuntu' in lookup('command', 'id ubuntu')" }
 
+- name: Conditional tasks for localhost
+  hosts: localhost
+  connection: local 
+  become: yes
+  gather_facts: true
 
+  roles:
+    - role: rm_ubuntu
+      when: ubuntu_user_check.rc == 0
 
