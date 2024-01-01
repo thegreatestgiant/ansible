@@ -1,4 +1,5 @@
 - name: Install nvm
+  become_user: "{{ user.name }}"
   shell: >
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
   args:
