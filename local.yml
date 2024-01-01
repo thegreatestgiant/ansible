@@ -14,3 +14,7 @@
 
   roles:
     - base
+    - { role: rm_ubuntu, when: "'ubuntu' in lookup('command', 'id ubuntu')" }
+
+
+
