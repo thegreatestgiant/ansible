@@ -56,8 +56,14 @@
   timezone:
     name: "America/New_York"
 
+- name: Check if Docker is installed
+  command: "docker --version"
+  register: docker_check
+  ignore_errors: true
+
 - name: Install Docker
   shell: bash -c "$(curl -fsSL https://get.docker.com)"
+  when: docker_check.rc != 0
 
 - name: Install NeoVim
   get_url:
