@@ -7,7 +7,10 @@
     - name: Update Repo's
       apt:
         update_cache: yes
+        upgrade: yes
+        autoremove: yes
+        autoclean: yes
       changed_when: False
 
-  tasks:
-    - include: tasks/pkgs.yml
+  role:
+    - base
