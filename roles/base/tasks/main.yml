@@ -75,9 +75,7 @@
     group: 0
 
 - name: Add universe repository
-  apt_repository:
-    repo: deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} universe
-    state: present
+  shell: apt-add-repository universe -y
 
 - name: Load fuse kernel module
   modprobe:
