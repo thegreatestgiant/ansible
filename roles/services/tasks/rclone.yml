@@ -30,9 +30,10 @@
   when: rclone_download|success
 
 - name: Create Kavita directory
-  path: "{{ user.home }}/Kavita"
-  state: directory
-  mode: 0755
+  file:
+    path: "{{ user.home }}/Kavita"
+    state: directory
+    mode: 0755
 
 - name: configure rclone
   copy:
@@ -47,28 +48,28 @@
     group: "{{ user.name }}"
     mode: 0600
 
-# - name: Configure rclone service
-#   copy:
-#     content: |
-#       [Unit]
-#       Description=rclone
-#
-#       [Service]
-#       user={{ user.name }}
-#       ExecStart=/usr/bin/rclone mount Kavita-gd: {{ user.home }}/Kavita --allow-other --allow-non-empty --vfs-cache-mode full
-#       Restart=on-abort
-#
-#       [Install]
-#       WantedBy=multi-user.target
-#     dest: /etc/systemd/system/rclone.service
-#     group: root
-#     owner: root
-#     mode: 0644
-#
-# - name: Enable and start the service
-#   systemd:
-#     name: rclone.service
-#     enabled: yes
-#     state: started
-#
-#
+- name: Configure rclone service
+  copy:
+    content: |
+      [Unit]
+      Description=rclone
+
+      [Service]
+      user={{ user.name }}
+      ExecStart=/usr/bin/rclone mount Kavita-gd: {{ user.home }}/Kavita --allow-other --allow-non-empty --vfs-cache-mode full
+      Restart=on-abort
+
+      [Install]
+      WantedBy=multi-user.target
+    dest: /etc/systemd/system/rclone.service
+    group: root
+    owner: root
+    mode: 0644
+
+- name: Enable and start the service
+  systemd:
+    name: rclone.service
+    enabled: yes
+    state: started
+
+
