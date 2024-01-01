@@ -1,0 +1,59 @@
+---
+- name: Flush iptables rules
+  iptables:
+    flush: yes
+    policy:
+      input: ACCEPT
+      output: ACCEPT
+      forward: ACCEPT
+  changed_when: false
+
+- name: Save iptables rules
+  iptables_persistent:
+    state: saved
+  changed_when: false
+
+- name: Remove Snapd
+  block:
+    - name: Remove all Snap packages
+      command: snap remove "{{ item }}"
+      with_items: "{{ snap_list.stdout_lines }}"
+      when: "'snap' in snap_list.stdout_lines"
+      changed_when: "'snap' in snap_list.stdout_lines"
+
+    - name: Removing Snapd
+      apt:
+        name: snapd
+        state: absent
+      when: "'snap' in snap_list.stdout_lines"
+      changed_when: "'snap' in snap_list.stdout_lines"
+
+    - name: Autoremove Snapd
+      apt:
+        autoremove: yes
+      when: "'snap' in snap_list.stdout_lines"
+      changed_when: "'snap' in snap_list.stdout_lines"
+
+    - name: Remove Snap directories
+      file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - /root/snap
+        - /snap
+      when: "'snap' in snap_list.stdout_lines"
+      changed_when: "'snap' in snap_list.stdout_lines"
+
+    - name: Lock ubuntu account
+      command: "{{ item }}"
+      with_items:
+        - "usermod -L ubuntu"
+        - "passwd -l ubuntu"
+        - "chage -E0 ubuntu"
+        - "usermod -s /sbin/nologin ubuntu"
+      when: "'ubuntu' in user_list.stdout_lines"
+      changed_when: "'ubuntu' in user_list.stdout_lines"
+  vars:
+    snap_list: "{{ lookup('command', 'snap list | awk \\'{print $1}\\'') }}"
+    user_list: "{{ lookup('command', 'id ubuntu') }}"
+
