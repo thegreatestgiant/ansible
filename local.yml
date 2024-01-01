@@ -1,15 +1,15 @@
 ---
 - hosts: localhost
   connection: local 
-  become: true
+  become: yes
 
   pre_tasks:
     - name: Update Repo's
       apt:
-        update_cache: yes
+        update_cache: True
         upgrade: yes
-        autoremove: yes
-        autoclean: yes
+        autoremove: True
+        autoclean: True
       changed_when: False
 
   roles:
