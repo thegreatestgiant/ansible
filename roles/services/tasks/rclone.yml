@@ -40,6 +40,14 @@
     state: directory
     mode: 0755
 
+- name: Create rclone configuration directory
+  file:
+    path: "{{ user.home }}/.config/rclone"
+    state: directory
+    mode: 0700
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+
 - name: configure rclone
   copy:
     content: |
@@ -52,8 +60,6 @@
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
     mode: 0600
-    validate: "/usr/bin/test -d {{ user.home }}/.config/rclone || /usr/bin/mkdir -p {{ user.home }}/.config/rclone"
-
 
 - name: Configure rclone service
   copy:
