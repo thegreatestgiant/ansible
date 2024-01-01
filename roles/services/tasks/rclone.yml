@@ -20,6 +20,7 @@
           remote_src: yes
           match:
             - '*/rclone'
+          creates: /usr/bin/rclone
         when: rclone_download|success
 
       - name: Extract rclone man page
