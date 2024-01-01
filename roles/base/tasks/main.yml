@@ -26,7 +26,8 @@
       - wget
       - fuse 
       - libfuse2
-    state: present 
+    state: present
+    changed_when: false
 
 - name: Insert Alias
   lineinfile:
@@ -74,7 +75,7 @@
 
 - name: Add universe repository
   apt_repository:
-    repo: 'deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} universe'
+    repo: "deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} universe"
     state: present
 
 - name: Load fuse kernel module
