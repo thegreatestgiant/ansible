@@ -6,3 +6,35 @@
     group: root
     mode: 0644
   notify: restart_sshd
+
+- name: Make sure .ssh directory exists
+  file:
+    path: "{{ ansible_env.HOME }}/.ssh"
+    state: directory
+    mode: 0700
+
+- name: Copy private key
+  template:
+    src: templates/id_ed25519.j2
+    dest: "{{ ansible_env.HOME }}/.ssh/id_ed25519"
+    mode: 0600
+
+- name: Copy public key
+  template:
+    src: templates/public_key.j2
+    dest: "{{ ansible_env.HOME }}/.ssh/id_ed25519.pub"
+    mode: 0644
+
+- name: Copy Authorized Keys
+  template:
+    src: templates/public_key.j2
+    dest: "{{ ansible_env.HOME }}/.ssh/authorized_keys"
+    mode: 0600
+
+- name: Copy config file
+  template:
+    src: templates/config.j2
+    dest: "{{ ansible_env.HOME }}/.ssh/config"
+    mode: 0600
+
+
