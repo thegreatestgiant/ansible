@@ -1,83 +1,10 @@
-- name: Install a gpg to make gh work (I think)
-  apt_key:
-    url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
-    state: present
-
-- name: Add GitHub CLI repository
-  apt_repository:
-     repo: "deb [arch={{ lookup('pipe', 'dpkg --print-architecture') }} signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main"
-     state: present
-
-- name: Install All Packages
-  apt:
-    name: 
-      - sudo
-      - nano
-      - net-tools
-      - nautilus
-      - bat
-      - sshfs
-      - zip
-      - unzip
-      - tree
-      - git
-      - gh
-      - fuse3
-      - wget
-    state: present
-  changed_when: False
-
-- name: Insert Alias
-  lineinfile:
-    path: /etc/bash.bashrc
-    line: "{{ item }}"
-  with_items:
-    - alias bat='batcat'
-    - alias cmatrix='cmatrix -sb'
-    - alias i='sudo apt install -y'
-    - alias cd..='cd ..'
-    - alias ip='curl icanhazip.com'
-    - alias ls='ls --color=auto -h'
-    - alias l='ls -CFh'
-    - alias la='ls -Ah'
-    - alias ll='ls -alhF'
-    - alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -'
-    - alias weather='curl wttr.in'
-    - alias zupdate='sudo apt update && sudo apt upgrade -y'
-    - alias grep='grep --color=auto'
-    - HISTTIMEFORMAT='%Y-%m-%d %T'
-    - alias ncdir="cd ~/.config/nvim"
-    - alias ncf="nvim ~/.config/nvim/init.lua"
-    - alias brc="nvim ~/.bashrc"
-    - alias nv="nvim"
+- include_tasks: tasks/gh_stuff.yml
+- include_tasks: tasks/pkgs.yml
+- include_tasks: tasks/alias.yml
+- include_tasks: tasks/docker.yml
+- include_tasks: tasks/nvim.yml
 
 - name: Set TZ
   timezone:
     name: "America/New_York"
 
-- name: Check if Docker is installed
-  command: "docker --version"
-  register: docker_check
-  ignore_errors: true
-  changed_when: False
-
-- name: Install Docker
-  shell: bash -c "$(curl -fsSL https://get.docker.com)"
-  when: docker_check.rc != 0
-
-- name: Install NeoVim
-  get_url:
-    url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-    dest: /usr/bin/nvim
-    mode: '0755'
-    group: 0
-
-- name: Add universe repository
-  shell: apt-add-repository universe -y && apt install libfuse2
-  changed_when: False
-
-- name: Add user to docker group
-  user:
-    name: "{{ ansible_env.USER }}"
-    groups: docker 
-    append: yes
