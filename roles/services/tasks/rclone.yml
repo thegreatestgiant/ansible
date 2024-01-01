@@ -5,7 +5,7 @@
 
 - name: Install rclone
   block:
-    block:
+    tasks:
       - name: Download rclone
         get_url:
           url: "https://downloads.rclone.org/rclone-current-linux-{{ lookup('pipe', 'dpkg --print-architecture') }}.zip"
