@@ -1,0 +1,24 @@
+- name: Insert Alias
+  lineinfile:
+    path: /etc/bash.bashrc
+    line: "{{ item }}"
+  with_items:
+    - alias bat='batcat'
+    - alias cmatrix='cmatrix -sb'
+    - alias i='sudo apt install -y'
+    - alias cd..='cd ..'
+    - alias ip='curl icanhazip.com'
+    - alias ls='ls --color=auto -h'
+    - alias l='ls -CFh'
+    - alias la='ls -Ah'
+    - alias ll='ls -alhF'
+    - alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -'
+    - alias weather='curl wttr.in'
+    - alias zupdate='sudo apt update && sudo apt upgrade -y'
+    - alias grep='grep --color=auto'
+    - HISTTIMEFORMAT='%Y-%m-%d %T'
+    - alias ncdir="cd ~/.config/nvim"
+    - alias ncf="nvim ~/.config/nvim/init.lua"
+    - alias brc="nvim ~/.bashrc"
+    - alias nv="nvim"
+

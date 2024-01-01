@@ -1,0 +1,9 @@
+- name: Install a gpg to make gh work (I think)
+  apt_key:
+    url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
+    state: present
+
+- name: Add GitHub CLI repository
+  apt_repository:
+     repo: "deb [arch={{ lookup('pipe', 'dpkg --print-architecture') }} signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main"
+     state: present

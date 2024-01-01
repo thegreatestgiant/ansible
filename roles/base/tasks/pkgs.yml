@@ -1,0 +1,19 @@
+- name: Install All Packages
+  apt:
+    name: 
+      - sudo
+      - nano
+      - net-tools
+      - nautilus
+      - bat
+      - sshfs
+      - zip
+      - unzip
+      - tree
+      - git
+      - gh
+      - fuse3
+      - wget
+    state: present
+  changed_when: False
+
