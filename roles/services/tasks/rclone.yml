@@ -1,5 +1,5 @@
 - name: Check if rclone is installed
-  command: command -v rclone
+  command: which rclone
   register: rclone_installed
   ignore_errors: yes
 
@@ -19,7 +19,7 @@
     match:
       - '*/rclone'
     creates: /usr/bin/rclone
-  when: rclone_download|success and rclone_installed.rc != 0
+  when: rclone_download|succeeded and rclone_installed.rc != 0
 
 - name: Extract rclone man page
   unarchive:
@@ -28,7 +28,7 @@
     remote_src: yes
     match:
       - '*/rclone.1'
-  when: rclone_download|success and rclone_installed.rc != 0
+  when: rclone_download|succeeded and rclone_installed.rc != 0
 
 - name: Create Kavita directory
   file:
