@@ -26,7 +26,7 @@
       - wget
       - fuse 
       - libfuse2
-    state: latest
+    state: present 
 
 - name: Insert Alias
   lineinfile:
