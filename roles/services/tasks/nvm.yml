@@ -5,10 +5,13 @@
   args:
     creates: "{{ user.home }}/.nvm/nvm.sh"
 
+- name: Source new stuff
+  become_user: "{{ user.name }}"
+  command: bash -c "source ~/.bashrc"
+
 - name: Install node
   become_user: "{{ user.name }}"
   shell: >
-    source ~/.bashrc && \
     nvm install 18
   args:
     creates: "{{ user.home }}/.npm"
