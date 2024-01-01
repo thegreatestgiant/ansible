@@ -89,6 +89,6 @@
 - name: Add user to fuse group
   become: yes
   user:
-    name: "{{ ansible_env.User }}"
+    name: "{{ ansible_env.USER }}"
     groups: ['fuse', 'docker']
     append: yes
