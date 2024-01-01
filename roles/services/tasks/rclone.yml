@@ -8,6 +8,7 @@
     url: "https://downloads.rclone.org/rclone-current-linux-{{ lookup('pipe', 'dpkg --print-architecture') }}.zip"
     dest: /tmp/rc.zip
   register: rclone_download
+  when: rclone_installed.rc != 0
 
 - name: Extract rclone
   unarchive:
@@ -18,7 +19,7 @@
     match:
       - '*/rclone'
     creates: /usr/bin/rclone
-  when: rclone_download|success
+  when: rclone_download|success && rclone_installed.rc != 0
 
 - name: Extract rclone man page
   unarchive:
@@ -27,7 +28,7 @@
     remote_src: yes
     match:
       - '*/rclone.1'
-  when: rclone_download|success
+  when: rclone_download|success && rclone_installed.rc != 0
 
 - name: Create Kavita directory
   file:
