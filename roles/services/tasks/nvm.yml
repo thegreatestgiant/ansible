@@ -1,8 +1,14 @@
 - name: Install nvm
   become_user: "{{ user.name }}"
   shell: >
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash && \
-    source ~/.bashrc && \
-    nvm install 18
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
   args:
     creates: "{{ user.home }}/.nvm/nvm.sh"
+
+  - name: Install node
+    become_user: "{{ user.name }}"
+    shell: >
+      source ~/.bashrc && \
+      nvm install 18
+    args:
+      creates: "{{ user.home }}/.npm"
