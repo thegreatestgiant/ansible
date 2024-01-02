@@ -1,0 +1,5 @@
+- name: Download Go for {{ go.arch }}
+  get_url:
+    url: "https://go.dev/dl/go{{ go.version }}.linux-{{ go.arch }}.tar.gz"
+    dest: /tmp/go.tar
+    checksum: "{{ go.checksum }}"
