@@ -13,7 +13,8 @@
   shell: >
     unzip -j /tmp/rc.zip '*/rclone' -d /usr/bin/
     unzip -j rc.zip '*/rclone.1' -d /usr/local/share/man/man1/
-  creates: '/usr/bin/rclone'
+  args:
+    creates: '/usr/bin/rclone'
 
 - name: Create Kavita directory
   file:
