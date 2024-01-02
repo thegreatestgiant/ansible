@@ -2,14 +2,10 @@
   get_url:
     url: "https://go.dev/dl/go{{ go.version }}.linux-{{ lookup('pipe', 'dpkg --print-architecture') }}.tar.gz"
     dest: /tmp/go.tar
-    checksum: "{{ go.checksum.1 }}"
-    # checksum: "sha256:841cced7ecda9b2014f139f5bab5ae31785f35399f236b8b3e75dff2a2978d96"
-    # checksum: "{{ item }}"
-  # loop:
-  #   - "{{ go.checksum.1 }}"
-  #   - "{{ go.checksum.2 }}"
-  # loop_control:
-  #   loop_var: checksum_result
+    checksum: "{{ item }}"
+  loop:
+    - "{{ go.checksum.1 }}"
+    - "{{ go.checksum.2 }}"
 
 - name: Extract Go
   unarchive:
