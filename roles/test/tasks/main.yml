@@ -1,6 +1,6 @@
 - name: create test file
   template:
-    src: vailt.j2
+    src: vault.j2
     dest: /home/sean/.vault.txt
     group: sean
     owner: sean
