@@ -15,8 +15,8 @@
     dest: /usr/bin/
     mode: 0755
     remote_src: yes
-    include: '*/rclone'
-    extra_opts: "--strip-components=1"
+    # include: '*/rclone'
+    extra_opts: "--wildcards */rclone" 
 
 - name: Extract rclone man page
   unarchive:
@@ -24,8 +24,8 @@
     dest: /usr/local/share/man/man1/
     remote_src: yes
     creates: /usr/local/share/man/man1/rclone.1
-    include: '*/rclone.1'
-    extra_opts: "--strip-components=1"
+    # include: '*/rclone.1'
+    extra_opts: "--wildcards */rclone.1"
 
 - name: Create Kavita directory
   file:
