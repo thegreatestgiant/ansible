@@ -8,6 +8,7 @@
     - "{{ go.checksum.2 }}"
   loop_control:
     loop_var: checksum_result
+  ignore_errors: yes
 
 - name: Extract Go
   unarchive:
