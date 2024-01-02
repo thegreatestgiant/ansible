@@ -1,7 +1,7 @@
 - include_tasks: "{{ item }}"
   with_items:
-    - nvm.yml
-    - go.yml
+    # - nvm.yml
+    # - go.yml
     - rclone.yml
 
 - name: Source stuff

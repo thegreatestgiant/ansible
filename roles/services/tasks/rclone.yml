@@ -16,7 +16,7 @@
     mode: 0755
     remote_src: yes
     creates: /usr/bin/rclone
-  when: "'*/rclone' in item.name" 
+  when: "'*/rclone' in rclone_item.name" 
   loop_control:
     loop_var: rclone_item
   with_items:
@@ -33,7 +33,7 @@
     dest: /usr/local/share/man/man1/
     remote_src: yes
     creates: /usr/local/share/man/man1/rclone.1
-  when: "'*/rclone.1' in item.name"
+  when: "'*/rclone.1' in man_item.name"
   loop_control:
     loop_var: man_item
   with_items:
