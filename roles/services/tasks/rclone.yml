@@ -17,8 +17,15 @@
     remote_src: yes
     creates: /usr/bin/rclone
   when: "'*/rclone' in item.name" 
+  loop_control:
+    loop_var: rclone_item
   with_items:
     - name: '*/rclone'
+
+- name: Ensure the destination directory for rclone man page exists
+  file:
+    path: /usr/local/share/man/man1/
+    state: directory
 
 - name: Extract rclone man page
   unarchive:
@@ -27,6 +34,8 @@
     remote_src: yes
     creates: /usr/local/share/man/man1/rclone.1
   when: "'*/rclone.1' in item.name"
+  loop_control:
+    loop_var: man_item
   with_items:
     - name: '*/rclone.1'
 
