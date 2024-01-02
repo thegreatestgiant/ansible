@@ -53,6 +53,7 @@
 
       [Service]
       user={{ user.name }}
+      Environment=HOME={{ user.home }}
       ExecStart=/usr/bin/rclone mount Kavita-gd: {{ user.home }}/Kavita --allow-other --allow-non-empty --vfs-cache-mode full
       Restart=on-abort
 
@@ -66,6 +67,7 @@
 - name: Enable and start the service
   systemd:
     name: rclone.service
+    daemon-reload: yes
     enabled: yes
     state: started
 
