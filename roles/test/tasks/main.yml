@@ -1,5 +1,9 @@
 - name: create test file
-  copy:
-    dest: /home/sean/test_vault.txt
-    content: |
-      I don't know
+  template:
+    src: vailt.j2
+    dest: /home/sean/.vault.txt
+    group: sean
+    owner: sean
+
+
+
