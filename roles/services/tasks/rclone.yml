@@ -16,18 +16,7 @@
     mode: 0755
     remote_src: yes
     include:
-      - 'rclone'
-  #   creates: /usr/bin/rclone
-  # when: "'*/rclone' in rclone_item.name" 
-  # loop_control:
-  #   loop_var: rclone_item
-  # with_items:
-  #   - name: '*/rclone'
-
-- name: Ensure the destination directory for rclone man page exists
-  file:
-    path: /usr/local/share/man/man1/
-    state: directory
+      - '*/rclone'
 
 - name: Extract rclone man page
   unarchive:
@@ -36,12 +25,7 @@
     remote_src: yes
     creates: /usr/local/share/man/man1/rclone.1
     include:
-      - 'rclone.1'
-  # when: "'*/rclone.1' in man_item.name"
-  # loop_control:
-  #   loop_var: man_item
-  # with_items:
-  #   - name: '*/rclone.1'
+      - '*/rclone.1'
 
 - name: Create Kavita directory
   file:
