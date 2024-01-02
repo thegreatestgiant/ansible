@@ -18,6 +18,7 @@
 
 - name: Create Kavita directory
   file:
+  become_user: "{{ user.name }}"
     path: "{{ user.home }}/Kavita"
     state: directory
     mode: 0755
