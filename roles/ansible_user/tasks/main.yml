@@ -11,6 +11,18 @@
     group: root
     mode: 0440
 
+- name: create vault file 
+  template:
+    src: vault.j2
+    dest: /home/ansible/.vault-pass.txt
+    owner: ansible
+    group: ansible
+
+- name: Create ansible.cfg 
+  copy:
+    src: ansible.cfg
+    dest: /etc/ansible/ansible.cfg
+
 - name: Install cron job (ansible-pull)
   cron:
     user: ansible

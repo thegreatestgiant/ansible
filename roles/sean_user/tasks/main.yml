@@ -10,4 +10,10 @@
   include_role:
     name: ssh
 
-
+- name: copy sudoers_ansible
+  copy:
+    src: sudoers_sean
+    dest: /etc/sudoers.d/sean
+    owner: root
+    group: root
+    mode: 0440

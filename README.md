@@ -22,6 +22,6 @@ ANSIBLE_ASK_VAULT_PASS=True ansible-pull -U https://github.com/thegreatestgiant/
 - [x] Link ssh to sean_user
 - [x] Add all services to services (Go and NPM I think)
 - [x] Look at the startup script for another role maybe
-- [ ] Tie it all together in local.yml
+- [x] Tie it all together in local.yml
 - [ ] Add a github action automation
 
