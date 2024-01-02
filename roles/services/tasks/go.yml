@@ -5,7 +5,7 @@
     checksum: "{{ checksum_result }}"
   loop:
     - "{{ go.checksum.1 }}"
-    # - "{{ go.checksum.2 }}"
+    - "{{ go.checksum.2 }}"
   loop_control:
     loop_var: checksum_result
   failed_when: false
