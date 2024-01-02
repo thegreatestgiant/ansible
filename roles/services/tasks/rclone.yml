@@ -15,17 +15,6 @@
     unzip -j rc.zip '*/rclone.1' -d /usr/local/share/man/man1/
   creates: '/usr/bin/rclone'
 
-- name: Extract rclone man page
-  unarchive:
-    src: /tmp/rc.zip
-    dest: /usr/local/share/man/man1/
-    remote_src: yes
-    creates: /usr/local/share/man/man1/rclone.1
-    # include: '*/rclone.1'
-    extra_opts: 
-      - "--wildcards"
-      - "*/rclone.1"
-
 - name: Create Kavita directory
   file:
     path: "{{ user.home }}/Kavita"
