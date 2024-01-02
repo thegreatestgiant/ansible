@@ -1,8 +1,8 @@
 - include_tasks: "{{ item }}"
   with_items:
-    # - nvm.yml
+    - nvm.yml
     - go.yml
-    # - rclone.yml
+    - rclone.yml
 
 - name: Source stuff
   command: bash -c "source /etc/bash.bashrc"
