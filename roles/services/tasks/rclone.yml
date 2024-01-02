@@ -10,7 +10,7 @@
   when: rclone_installed.rc != 0
 
 - name: Extract rclone
-  unarchive:
+  ansible.builtin.unarchive:
     src: /tmp/rc.zip
     dest: /usr/bin/
     mode: 0755
@@ -21,7 +21,7 @@
   when: rclone_installed.rc != 0
 
 - name: Extract rclone man page
-  unarchive:
+  ansible.builtin.unarchive:
     src: /tmp/rc.zip
     dest: /usr/local/share/man/man1/
     remote_src: yes
