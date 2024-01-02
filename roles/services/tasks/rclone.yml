@@ -10,15 +10,10 @@
   when: rclone_installed.rc != 0
 
 - name: Extract rclone
-  unarchive:
-    src: /tmp/rc.zip
-    dest: /usr/bin/
-    mode: 0755
-    remote_src: yes
-    # include: '*/rclone'
-    extra_opts: 
-      - "--wildcards"
-      - "*/rclone" 
+  shell: >
+    unzip -j /tmp/rc.zip '*/rclone' -d /usr/bin/
+    unzip -j rc.zip '*/rclone.1' -d /usr/local/share/man/man1/
+  creates: '/usr/bin/rclone'
 
 - name: Extract rclone man page
   unarchive:
