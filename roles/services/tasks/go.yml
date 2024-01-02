@@ -3,7 +3,7 @@
   register: dpkg_arch
 
 - name: Go through all versions to download
-  include_tasks: dwnld_go.yml
+  include_tasks: tasks/dwnld_go.yml
   loop: "{{ go_versions }}"
   loop_control:
     loop_var: go
