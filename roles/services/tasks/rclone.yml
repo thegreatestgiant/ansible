@@ -10,24 +10,24 @@
   when: rclone_installed.rc != 0
 
 - name: Extract rclone
-  ansible.builtin.unarchive:
+  unarchive:
     src: /tmp/rc.zip
     dest: /usr/bin/
     mode: 0755
     remote_src: yes
-    match:
-      - '*/rclone'
     creates: /usr/bin/rclone
   when: rclone_installed.rc != 0
+  with_items:
+    - '*/rclone'
 
 - name: Extract rclone man page
-  ansible.builtin.unarchive:
+  unarchive:
     src: /tmp/rc.zip
     dest: /usr/local/share/man/man1/
     remote_src: yes
-    match:
-      - '*/rclone.1'
   when: rclone_installed.rc != 0
+  with_items:
+    - '*/rclone.1'
 
 - name: Create Kavita directory
   file:
