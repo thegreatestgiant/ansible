@@ -1,8 +1,8 @@
 - name: Download Go
   get_url:
-    # url: "https://go.dev/dl/go{{ go.version }}.linux-{{ lookup('pipe', 'dpkg --print-architecture') }}.tar.gz"
+    url: "https://go.dev/dl/go{{ go.version }}.linux-{{ lookup('pipe', 'dpkg --print-architecture') }}.tar.gz"
     dest: /tmp/go.tar
-    url: "https://go.dev/dl/go1.21.5.linux-arm64.tar.gz"
+    # url: "https://go.dev/dl/go1.21.5.linux-arm64.tar.gz"
     checksum: "sha256:841cced7ecda9b2014f139f5bab5ae31785f35399f236b8b3e75dff2a2978d96"
     # checksum: "{{ item }}"
   # loop:
