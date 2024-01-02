@@ -3,6 +3,7 @@
     url: "https://go.dev/dl/go{{ go.version }}.linux-{{ lookup('pipe', 'dpkg --print-architecture') }}.tar.gz"
     dest: /tmp/go.tar
     checksum: "{{ go.checksum.1 if go.checksum.1 == download_result.checksum.sha256 else go.checksum.2 }}"
+  register: download_result
 
 - name: Extract Go
   unarchive:
