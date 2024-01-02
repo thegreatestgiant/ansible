@@ -25,6 +25,7 @@
     src: /tmp/rc.zip
     dest: /usr/local/share/man/man1/
     remote_src: yes
+    creates: /usr/local/share/man/man1/rclone.1/
   when: rclone_installed.rc != 0
   with_items:
     - '*/rclone.1'
