@@ -25,7 +25,7 @@
     src: /tmp/rc.zip
     dest: /usr/local/share/man/man1/
     remote_src: yes
-    creates: /usr/local/share/man/man1/rclone.1/
+    creates: /usr/local/share/man/man1/rclone.1
   when: "'*/rclone.1' in item.name"
   with_items:
     - name: '*/rclone.1'
