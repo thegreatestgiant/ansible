@@ -1,0 +1,3 @@
+- name: create test file
+  dest: /home/sean/test_vault.txt
+  content: I don't know
