@@ -1,15 +1,18 @@
-- name: Download Go
-  get_url:
-    url: "https://go.dev/dl/go{{ go.version }}.linux-{{ lookup('pipe', 'dpkg --print-architecture') }}.tar.gz"
-    dest: /tmp/go.tar
-    checksum: "{{ go.checksum.1 if go.checksum.1 == download_result.checksum.sha256 else go.checksum.2 }}"
-  register: download_result
+- name: Get Arch
+  shell: dpkg --print-architecture
+  register: dpkg_arch
+
+- name: Go through all versions to download
+  include_tasks: dwnld_go.yml
+  loop: "{{ go_versions }}"
+  loop_control:
+    loop_var: go
+  when: go.arch == dpkg_arch.stdout.strip()
 
 - name: Extract Go
   unarchive:
     src: /tmp/go.tar
     dest: /usr/local/
-  # when: checksum_result is succeeded
 
 - name: Add Go to PATH
   lineinfile:
