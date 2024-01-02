@@ -6,8 +6,8 @@
   loop:
     - "{{ go.checksum.1 }}"
     # - "{{ go.checksum.2 }}"
-  loop_control:
-    loop_var: checksum_result
+  # loop_control:
+  #   loop_var: checksum_result
 
 - name: Extract Go
   unarchive:
