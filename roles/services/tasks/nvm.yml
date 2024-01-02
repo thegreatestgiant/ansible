@@ -10,18 +10,3 @@
   args:
     creates: "{{ user.home }}/.nvm/nvm.sh"
 
-# - name: Install Node.js
-#   become_user: "{{ user.name }}"
-#   shell: "nvm install 18"
-#   args:
-#     executable: /bin/bash
-#   environment:
-#     NVM_DIR: "{{ user.home }}/.nvm"
-
-# - name: Set default Node.js version
-#   shell: "nvm alias default {{ node_version }}"
-#   args:
-#     executable: /bin/bash
-#   environment:
-#     NVM_DIR: "{{ user.home }}/.nvm"
-#

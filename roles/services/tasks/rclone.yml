@@ -20,7 +20,7 @@
       - '*/rclone'
     creates: /usr/bin/rclone
   when: 
-    - not (/tmp/rc.zip | stat).exists 
+    - not (stat('/tmp/rc.zip').stat.exists)
     - rclone_installed.rc != 0
 
 - name: Extract rclone man page
@@ -31,7 +31,7 @@
     match:
       - '*/rclone.1'
   when: 
-    - not (/tmp/rc.zip | stat).exists 
+    - not (stat('/tmp/rc.zip').stat.exists)
     - rclone_installed.rc != 0
 
 - name: Create Kavita directory
