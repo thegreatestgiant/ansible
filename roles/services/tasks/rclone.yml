@@ -17,11 +17,12 @@
     creates: '/usr/bin/rclone'
 
 - name: Create Kavita directory
-  become_user: "{{ user.name }}"
   file:
     path: "{{ user.home }}/Kavita"
     state: directory
     mode: 0755
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
 
 - name: Create rclone configuration directory
   file:
@@ -58,8 +59,8 @@
       [Install]
       WantedBy=multi-user.target
     dest: /etc/systemd/system/rclone.service
-    group: root
-    owner: root
+    group: {{ user.name }}
+    owner: {{ user.name }}
     mode: 0644
 
 - name: Enable and start the service
