@@ -7,15 +7,15 @@
     - name: Update Repo's
       apt:
         update_cache: yes 
-        upgrade: yes
+        # upgrade: yes
         # autoremove: yes 
         # autoclean: yes 
       # changed_when: no
 
-  roles:
-    - base
-    - ansible_user
-    - sean_user 
+  # roles:
+  #   - base
+  #   - ansible_user
+  #   - sean_user 
 
   tasks:
     - name: Check if 'ubuntu' user exists and is unlocked
