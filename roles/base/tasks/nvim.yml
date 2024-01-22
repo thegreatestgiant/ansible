@@ -5,6 +5,17 @@
     mode: '0755'
     group: '0'
 
-- name: Make NeoVim work
+- name: Make NeoVim work on Ubuntu (>= 22.04)
   shell: add-apt-repository universe -y && apt install libfuse2 -y
   changed_when: False
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version | version_compare('22.04', '>=')
+
+- name: Set up fuse for NeoVim on Ubuntu <= 21.10
+  shell: |
+    apt install fuse libfuse2 -y
+    modprobe fuse
+    groupadd fuse
+    user="$(whoami)"
+    usermod -a -G fuse $user
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version | version_compare('21.10', '<=')
+
