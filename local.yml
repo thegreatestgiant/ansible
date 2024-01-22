@@ -1,5 +1,5 @@
 ---
-- hosts: set-up
+- hosts: localhost
   connection: local 
   become: yes
 
@@ -16,11 +16,6 @@
     - base
     - ansible_user
     - sean_user 
-
-- name: Conditional tasks for localhost
-  hosts: localhost
-  connection: local 
-  become: yes
 
   tasks:
     - name: Check if 'ubuntu' user exists and is unlocked
