@@ -1,6 +1,5 @@
 - include_tasks: "{{ item }}"
   with_items:
-    - gh_stuff.yml
     - pkgs.yml
     - alias.yml
     - docker.yml
