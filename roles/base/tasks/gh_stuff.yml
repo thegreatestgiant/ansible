@@ -7,3 +7,8 @@
   apt_repository:
      repo: "deb [arch={{ lookup('pipe', 'dpkg --print-architecture') }} signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main"
      state: present
+
+- name: Install Github
+  apt:
+    name: gh
+    state: present
