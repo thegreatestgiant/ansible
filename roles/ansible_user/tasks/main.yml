@@ -18,6 +18,11 @@
     owner: ansible
     group: ansible
 
+- name: Make sure /etc/ansible
+  file:
+    path: /etc/ansible
+    state: directory
+
 - name: Create ansible.cfg 
   copy:
     src: ansible.cfg
