@@ -12,12 +12,14 @@
         autoclean: yes 
       changed_when: no
 
-  roles:
-    - base
-    - ansible_user
-    - sean_user 
-
   tasks:
+    - include_role:
+        name: "{{ item }}"
+      loop:
+        - base
+        - ansible_user
+        - sean_user
+        
     - name: Check if 'ubuntu' user exists and is unlocked
       command: "id -u ubuntu && passwd -S ubuntu | awk '{print $2}'"
       register: ubuntu_user_check
