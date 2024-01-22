@@ -17,3 +17,5 @@
     state: present
   changed_when: False
 
+- name: Install Gh
+  task: gh_stuff.yml
