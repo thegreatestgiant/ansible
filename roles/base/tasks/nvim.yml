@@ -3,7 +3,7 @@
     url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
     dest: /usr/bin/nvim
     mode: '0755'
-    group: 0
+    group: '0'
 
 - name: Make NeoVim work
   shell: add-apt-repository universe -y && apt install libfuse2 -y
