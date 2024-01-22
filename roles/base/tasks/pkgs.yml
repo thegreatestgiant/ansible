@@ -11,7 +11,7 @@
       - unzip
       - tree
       - git
-      - gh
+      - gnupg
       - fuse3
       - wget
     state: present
