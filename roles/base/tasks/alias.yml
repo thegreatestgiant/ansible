@@ -1,7 +1,9 @@
 - name: Insert Alias
   lineinfile:
     path: /etc/bash.bashrc
-    line: "{{ item }}"
+    line: "{{ alias }}"
+  loop_control:
+    loop_var: alias
   with_items:
     - alias bat='batcat'
     - alias cmatrix='cmatrix -sb'
