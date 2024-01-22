@@ -8,8 +8,8 @@
       apt:
         update_cache: yes 
         upgrade: yes
-        autoremove: yes 
-        autoclean: yes 
+        # autoremove: yes 
+        # autoclean: yes 
       # changed_when: no
 
   roles:
