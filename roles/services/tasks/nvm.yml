@@ -9,7 +9,7 @@
     nvm install 18
   args:
     creates: "{{ user.home }}/.nvm/nvm.sh"
-    register: nvm_install_result
+  register: nvm_install_result
 
 - debug:
     var: nvm_install_result
