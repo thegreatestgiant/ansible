@@ -3,7 +3,7 @@
     name: ansible
     system: yes
 
-- name: copy sudoers_ansible
+- name: copy sudoers_ansible 
   copy:
     src: files/sudoers_ansible
     dest: /etc/sudoers.d/ansible
@@ -18,7 +18,7 @@
     owner: ansible
     group: ansible
 
-- name: Make sure /etc/ansible
+- name: Make sure /etc/ansible exists
   file:
     path: /etc/ansible
     state: directory
