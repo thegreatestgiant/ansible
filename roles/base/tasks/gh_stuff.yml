@@ -1,8 +1,12 @@
-- name: Install a gpg to make gh work (I think)
-  apt_key:
+- name: Download GitHub CLI GPG key
+  get_url:
     url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
-    id: 23F3D4EA75716059
-    state: present
+    dest: /usr/share/keyrings/githubcli-archive-keyring.gpg
+
+- name: Adjust permissions on GPG key file
+  file:
+    path: /usr/share/keyrings/githubcli-archive-keyring.gpg
+    mode: "go+r"
 
 - name: Add GitHub CLI repository
   apt_repository:
