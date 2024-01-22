@@ -6,5 +6,5 @@
     group: 0
 
 - name: Make NeoVim work
-  shell: apt-add-repository universe -y && apt install libfuse2
+  shell: add-apt-repository universe -y && apt install libfuse2 -y
   changed_when: False
