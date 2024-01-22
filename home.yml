@@ -4,10 +4,12 @@
 
   tasks:
     - include_tasks: local.yml
+    
     - name: set hostname
       hostname:
         name: Home
         use: debian
+    - name: update hosts file
       lineinfile:
         path: /etc/hosts
         regexp: '^127.0.0.1[[:space:]]+localhost'
