@@ -10,12 +10,12 @@
         upgrade: full
         autoremove: yes 
         autoclean: yes 
-      # changed_when: no
+      changed_when: no
 
-  # roles:
-  #   - base
-  #   - ansible_user
-  #   - sean_user 
+  roles:
+    - base
+    - ansible_user
+    - sean_user 
 
   tasks:
     - name: Check if 'ubuntu' user exists and is unlocked
