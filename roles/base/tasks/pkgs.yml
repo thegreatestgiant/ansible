@@ -18,4 +18,4 @@
   changed_when: False
 
 - name: Install Gh
-  include_task: gh_stuff.yml
+  include_tasks: gh_stuff.yml
