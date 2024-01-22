@@ -1,5 +1,7 @@
 - include_role:
-    name: "{{ item }}"
+    name: "{{ role }}"
+  loop_control:
+    loop_var: role
   loop:
     - base
     - ansible_user
