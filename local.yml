@@ -10,7 +10,7 @@
         upgrade: yes
         autoremove: yes 
         autoclean: yes 
-      changed_when: False
+      changed_when: false
 
   roles:
     - base
