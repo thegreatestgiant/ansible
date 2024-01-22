@@ -1,5 +1,5 @@
 ---
-- hosts: set_up | localhost
+- hosts: set-up | localhost
   connection: local 
   become: yes
 
