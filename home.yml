@@ -1,5 +1,5 @@
 ---
-- hosts: home 
+- hosts: home | localhost
   become: yes
 
   tasks:
