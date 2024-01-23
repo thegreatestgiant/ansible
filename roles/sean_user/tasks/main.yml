@@ -1,19 +1,14 @@
-- name: Debug - Print user variable in sean_user role
-  debug:
-    var: user
-
 - name: Create/Ensure my user
   user:
     name: "{{ user.name }}"
     password: "{{ user.password | password_hash('sha512') }}"
-    # create_home: yes
-    # groups: sudo, docker, {{ user.name }}
+    groups: sudo, docker
     shell: /bin/bash
-    # append: yes
+    append: yes
 
-# - name: Set-up ssh for my user
-#   include_role:
-#     name: ssh
+- name: Set-up ssh for my user
+  include_role:
+    name: ssh
 
 - name: copy sudoers_ansible
   copy:
