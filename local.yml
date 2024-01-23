@@ -3,16 +3,10 @@
   become: yes
 
   pre_tasks:
-    - name: Display the number of hosts under set_up
-      debug:
-        var: groups['set_up'] | length
-    - name: Display the number of hosts
-      debug:
-        var: ansible_play_hosts | length
     - name: Check if gathering facts fails
       fail:
-        msg: "Gathering facts failed. Stopping the playbook."
-      when: "'UNREACHABLE' in ansible_facts and ansible_facts['UNREACHABLE']"
+        msg: "The number of hosts doesn't match under set_up. Stopping the playbook."
+      when: ansible_play_hosts | length != groups['set_up'] | length
       failed_when: no
 
     - name: Update Repo's
