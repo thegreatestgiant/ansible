@@ -3,6 +3,9 @@
   become: yes
 
   pre_tasks:
+    - name: Display the number of hosts
+      debug:
+        var: ansible_play_hosts | length
     - name: Check if gathering facts fails
       fail:
         msg: "Gathering facts failed. Stopping the playbook."
