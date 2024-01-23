@@ -4,6 +4,9 @@
   become: yes
 
   pre_tasks:
+    - name: Debug - Print global variables
+      debug:
+        var: user
     - name: Update Repo's
       apt:
         update_cache: yes 
