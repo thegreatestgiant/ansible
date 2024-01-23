@@ -1,6 +1,5 @@
 ---
-- hosts: set_up | localhost
-  connection: local 
+- hosts: set_up
   become: yes
 
   pre_tasks:
