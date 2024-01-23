@@ -8,9 +8,11 @@
     - sean_user
     
 - name: Check if 'ubuntu' user exists and is unlocked
-  command: "id -u ubuntu && passwd -S ubuntu | awk '{print $2}'"
+  command: >
+    bash -c 'id ubuntu && passwd -S ubuntu | awk "{print $2}"'
   register: ubuntu_user_check
   ignore_errors: true
+  failed_when: "'password' not in ubuntu_user_check.stdout"
 
 - name: Include the role based on the condition
   include_role:
