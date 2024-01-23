@@ -16,12 +16,10 @@ jobs:
       with:
         playbook: local.yml
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        configuration: |
-          [defaults]
-          remote_user=root
         vault_password: ${{ secrets.VAULT_PASS }}
         options: |
-          --inventory inventory.ini
+          -i inventory.ini
+          -u remote
 
 
 
