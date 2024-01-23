@@ -3,7 +3,7 @@
     url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
     dest: /usr/bin/nvim
     mode: '0755'
-    group: '0'
+    group: root
 
 - name: Make NeoVim work on Ubuntu (>= 22.04)
   shell: add-apt-repository universe -y && apt install libfuse2 -y
