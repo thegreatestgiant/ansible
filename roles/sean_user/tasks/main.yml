@@ -1,7 +1,8 @@
 - name: Create/Ensure my user
   user:
     name: "{{ user.name }}"
-    password: "{{ user.password | password_hash('sha512', 'passlib') }}"
+    password: "{{ user.password | password_hash('sha512') }}"
+    create_home: yes
     groups: sudo, docker
     shell: /bin/bash
     append: yes
