@@ -3,6 +3,9 @@
   become: yes
 
   pre_tasks:
+    - name: Display the number of hosts under set_up
+      debug:
+        var: groups['set_up'] | length
     - name: Display the number of hosts
       debug:
         var: ansible_play_hosts | length
