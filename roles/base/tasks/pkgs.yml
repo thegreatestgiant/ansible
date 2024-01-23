@@ -15,6 +15,7 @@
       - fuse3
       - wget
       - cron
+      - python3-passlib
     state: present
   changed_when: False
 
