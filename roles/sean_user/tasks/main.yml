@@ -1,3 +1,7 @@
+- name: Debug - Print user variable in sean_user role
+  debug:
+    var: user
+
 - name: Create/Ensure my user
   user:
     name: "{{ user.name }}"
