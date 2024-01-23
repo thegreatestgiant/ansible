@@ -4,8 +4,7 @@
 
   pre_tasks:
     - name: Check if gathering facts fails
-      fail:
-        msg: "The number of hosts doesn't match under set_up. Stopping the playbook."
+      meta: end_play
       when: ansible_play_hosts | length != groups['set_up'] | length
       failed_when: no
 
