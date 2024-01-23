@@ -19,7 +19,7 @@ jobs:
         vault_password: ${{ secrets.VAULT_PASS }}
         options: |
           -i inventory.ini
-          -u remote
+          -u root
 
 
 
