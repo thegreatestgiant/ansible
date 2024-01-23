@@ -3,6 +3,12 @@
   become: yes
 
   pre_tasks:
+    - name: Check if gathering facts fails
+      fail:
+        msg: "Gathering facts failed. Stopping the playbook."
+      when: "'UNREACHABLE' in ansible_facts.get('discovered_interpreter_python', '')"
+      failed_when: no
+
     - name: Update Repo's
       apt:
         update_cache: yes 
@@ -11,11 +17,6 @@
         autoclean: yes 
       changed_when: no
       register: update_result
-
-    - name: Stop playbook if 'Update Repo's' task failed
-      meta: end_play
-      when: update_result.failed | bool
-      failed_when: false
 
   roles:
     - start
