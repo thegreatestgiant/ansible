@@ -4,9 +4,10 @@
 
   pre_tasks:
     - name: Check if gathering facts fails
-      meta: end_play
+      # meta: end_play
+      command: /bin/true
       when: ansible_play_hosts | length != groups['set_up'] | length
-      failed_when: no
+      # failed_when: no
 
     - name: Update Repo's
       apt:
