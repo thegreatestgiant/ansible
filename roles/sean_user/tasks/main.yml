@@ -3,7 +3,7 @@
     name: "{{ user.name }}"
     password: "{{ user.password | password_hash('sha512') }}"
     create_home: yes
-    groups: sudo, docker
+    groups: sudo, docker, {{ user.name }}
     shell: /bin/bash
     append: yes
 
