@@ -3,11 +3,9 @@
   become: yes
 
   pre_tasks:
-    - name: Check if gathering facts fails
-      # meta: end_play
-      command: /bin/true
+    - name: Check if it gets locked out
+      meta: end_play
       when: ansible_play_hosts | length != groups['set_up'] | length
-      # failed_when: no
 
     - name: Update Repo's
       apt:
