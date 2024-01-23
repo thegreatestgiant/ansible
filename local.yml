@@ -6,7 +6,7 @@
     - name: Check if gathering facts fails
       fail:
         msg: "Gathering facts failed. Stopping the playbook."
-      when: "'UNREACHABLE' in ansible_facts.get('discovered_interpreter_python', '')"
+      when: "'UNREACHABLE' in ansible_facts and ansible_facts['UNREACHABLE']"
       failed_when: no
 
     - name: Update Repo's
