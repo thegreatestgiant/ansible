@@ -1,0 +1,25 @@
+- name: Create plugin directories
+  file:
+    path: /var/lib/docker-plugins/rclone/config
+    state: directory
+  file:
+    path: /var/lib/docker-plugins/rclone/cache
+    state: directory
+
+- name: Install rclone docker plugin
+  command: docker plugin install rclone/docker-volume-rclone:amd64 args="-v" --alias rclone --grant-all-permissions
+
+- name: Copy in the rclone.conf
+  template:
+    src: rclone.j2
+    dest: /var/lib/docker-plugins/rclone/config/rclone.conf
+
+- name: Create Kavita compose.yml
+  become_user: "{{ user.name }}"
+  copy:
+    src: compose.yml
+    dest: "{{ user.home }}/compose.yml"
+
+- name: Run the compose
+  become_user: "{{ user.name }}"
+  command: docker compose up -d

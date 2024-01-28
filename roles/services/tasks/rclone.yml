@@ -33,13 +33,8 @@
     group: "{{ user.name }}"
 
 - name: configure rclone
-  copy:
-    content: |
-      [Kavita-gd]
-      type = drive
-      scope = drive
-      token = {"access_token":"ya29.a0AfB_byA_63uVbAV-knDlW4pbhTEeu07J-X_4XDDJ7MSQIj_ORfDgskgV-OooYqQ-LTac1Ubeq_y_jPgSXAYa-N4VTbePLQG7wHHaEXcYKehKc-D4ITBlWve-oPVaNPkmJGvdtVMqdjsujZvj1a2suk2eYSZ101exxG_66zEaCgYKAWMSARISFQGOcNnChstS8Rhy_GcApg1YoI8vdQ0174","token_type":"Bearer","refresh_token":"1//01p-StAfIcKFNCgYIARAAGAESNwF-L9IrNj0Qwy49SSx6-kzKfsfS8QBQQGcSdj8bGuCGHWX8dH34os19eiXG2MWc7gUL2VUvYI0","expiry":"2023-09-22T18:48:05.198731154-04:00"}
-      team_drive = 
+  template:
+    src: rclone.j2
     dest: "{{ user.home }}/.config/rclone/rclone.conf"
     owner: "{{ user.name }}"
     group: "{{ user.name }}"

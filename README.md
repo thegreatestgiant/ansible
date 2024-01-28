@@ -22,6 +22,8 @@ ANSIBLE_ASK_VAULT_PASS=True ansible-pull -U https://github.com/thegreatestgiant/
 - group_vars/all.yml
 - roles/ansible_user/templates/vault.j2
 - roles/ssh/templates/*
+- roles/kavita/templates/rclone.j2
+- roles/services/templates/rclone.j2
 
 ## Group_vars
 
@@ -40,6 +42,11 @@ This is your vault password
 ## Templates
 
 This is everything you would want to put in your .ssh directory
+
+## Rclone.j2
+
+This is the contents of my rclone.conf file which you can generate by installing rclone `sudo -v ; curl https://rclone.org/install.sh | sudo bash` and running `rclone config`
+
 
 # RoadMap
 
