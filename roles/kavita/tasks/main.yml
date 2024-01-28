@@ -8,8 +8,14 @@
     path: /var/lib/docker-plugins/rclone/cache
     state: directory
 
+- name: Check if rclone Docker plugin exists
+  command: docker plugin inspect rclone/docker-volume-rclone:amd64
+  register: plugin_info
+  ignore_errors: true
+
 - name: Install rclone docker plugin
   command: docker plugin install rclone/docker-volume-rclone:amd64 args="-v" --alias rclone --grant-all-permissions
+  when: "'Error response from daemon: plugin rclone:latest already exists' in plugin_info.stderr"
 
 - name: Copy in the rclone.conf
   template:
