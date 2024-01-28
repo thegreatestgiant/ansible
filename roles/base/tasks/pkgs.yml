@@ -17,6 +17,7 @@
       - cron
       - python3-passlib
       - ripgrep
+      - python3-pip
     state: present
   changed_when: False
 

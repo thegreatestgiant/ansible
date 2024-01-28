@@ -29,6 +29,10 @@
     src: ansible.cfg
     dest: /etc/ansible/ansible.cfg
 
+- name: Install Ansible using pip3
+  pip:
+    name: ansible
+
 - name: Install cron job (ansible-pull)
   cron:
     user: ansible
