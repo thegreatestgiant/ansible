@@ -1,0 +1,27 @@
+services:
+    kavita:
+        image: jvmilazz0/kavita:latest
+        container_name: kavita
+        volumes:
+            - books:/books
+            - data:/kavita/config
+        environment:
+            - TZ=America/New_York
+        ports:
+            - 5000:5000
+        restart: unless-stopped
+
+volumes:
+  books:
+    driver: rclone
+    driver_opts:
+      remote: 'kavita:books'
+      allow_other: 'true'
+      vfs_cache_mode: full
+  
+  data:
+    driver: rclone
+    driver_opts:
+      remote: 'kavita:data'
+      allow_other: 'true'
+      vfs_cache_mode: full
