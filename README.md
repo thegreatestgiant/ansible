@@ -1,6 +1,6 @@
 # ansible
 
-## Notes
+# Notes
 When you try and do ansible-pull with vault there are two ways to get it to work
 
 1. You have to put `ANSIBLE_ASK_VAULT_PASS=True` in front of the ansible-pull
@@ -15,7 +15,33 @@ This is the command I currently use
 ANSIBLE_ASK_VAULT_PASS=True ansible-pull -U https://github.com/thegreatestgiant/ansible.git
 ```
 
-## RoadMap
+# Contents of Vault files
+
+## Location(s)
+
+- group_vars/all.yml
+- roles/ansible_user/templates/vault.j2
+- roles/ssh/templates/*
+
+## Group_vars
+
+```yml
+name: ***
+user:
+  name: "{{ name }}" 
+  password: "***"
+  home: "/home/{{ name }}"
+```
+
+## Vault.j2
+
+This is your vault password
+
+## Templates
+
+This is everything you would want to put in your .ssh directory
+
+# RoadMap
 
 - [x] finnish up ssh
 - [x] Do sean_user
@@ -23,5 +49,10 @@ ANSIBLE_ASK_VAULT_PASS=True ansible-pull -U https://github.com/thegreatestgiant/
 - [x] Add all services to services (Go and NPM I think)
 - [x] Look at the startup script for another role maybe
 - [x] Tie it all together in local.yml
-- [ ] Add a github action automation
+- [x] Add a github action automation
+
+## The github action
+
+The reason I set it up is because I like to spin up a bunch of temporary linode instances.
+The way I use it is I put the ip address into the inventory and then it runs, and I then have to remove that ip address because it locks to my automation which runs on root.
 

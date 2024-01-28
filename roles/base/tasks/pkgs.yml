@@ -16,6 +16,7 @@
       - wget
       - cron
       - python3-passlib
+      - ripgrep
     state: present
   changed_when: False
 
