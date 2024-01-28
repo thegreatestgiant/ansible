@@ -20,6 +20,7 @@
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version | float <= 21.10
 
 - name: Set up NvChad
+  become: "{{ user.name }}"
   git:
     repo: 'https://github.com/NvChad/NvChad'
     dest: "{{ user.home }}/.config/nvim"
