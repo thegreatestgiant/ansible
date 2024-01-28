@@ -9,13 +9,12 @@
     state: directory
 
 - name: Check if rclone Docker plugin exists
-  command: docker plugin inspect rclone/docker-volume-rclone:amd64
+  command: docker plugin list --format '{{.Name}}' 
   register: plugin_info
-  ignore_errors: true
 
 - name: Install rclone docker plugin
   command: docker plugin install rclone/docker-volume-rclone:amd64 args="-v" --alias rclone --grant-all-permissions
-  when: "'Error response from daemon: plugin rclone:latest already exists' in plugin_info.stderr"
+  when: 'rclone' not in installed_plugins.stdout_lines" 
 
 - name: Copy in the rclone.conf
   template:
