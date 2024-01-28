@@ -1,7 +1,9 @@
-- name: Create plugin directories
+- name: Create rclone config directory
   file:
     path: /var/lib/docker-plugins/rclone/config
     state: directory
+
+- name: Create rclone cache directory
   file:
     path: /var/lib/docker-plugins/rclone/cache
     state: directory
