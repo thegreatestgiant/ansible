@@ -14,7 +14,7 @@
 
 - name: Install rclone docker plugin
   command: docker plugin install rclone/docker-volume-rclone:amd64 args="-v" --alias rclone --grant-all-permissions
-  when: 'rclone' not in installed_plugins.stdout_lines" 
+  when: "'rclone' not in installed_plugins.stdout_lines" 
 
 - name: Copy in the rclone.conf
   template:
