@@ -3,7 +3,6 @@
     - pkgs.yml
     - alias.yml
     - docker.yml
-    - nvim.yml
 
 - name: Set TZ
   timezone:

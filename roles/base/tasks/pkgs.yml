@@ -22,5 +22,12 @@
     state: present
   changed_when: False
 
+- name: Install NeoVim
+  get_url:
+    url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    dest: /usr/bin/nvim
+    mode: '0755'
+    group: root
+
 - name: Install Gh
   include_tasks: gh_stuff.yml
