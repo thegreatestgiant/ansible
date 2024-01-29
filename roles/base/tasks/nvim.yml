@@ -5,7 +5,10 @@
     mode: '0755'
     group: root
 
+<<<<<<< HEAD
 - name: Make NeoVim work on Ubuntu (>= 22.04)
   shell: add-apt-repository universe -y && apt install libfuse2 -y
   changed_when: False
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version | float >= 22.04
+=======
+>>>>>>> 73da662 (:recycle: make nvim work without fancy stuff)

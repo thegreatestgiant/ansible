@@ -13,6 +13,7 @@
       - git
       - gnupg
       - fuse3
+      - libfuse2
       - wget
       - cron
       - python3-passlib
