@@ -9,7 +9,7 @@
     state: directory
 
 - name: Check if rclone Docker plugin exists
-  command: docker plugin list --format '{{.Name}}' 
+  command: docker plugin list --format '{{"{{.Name}}"}}' 
   register: plugin_info
 
 - name: Install rclone docker plugin
