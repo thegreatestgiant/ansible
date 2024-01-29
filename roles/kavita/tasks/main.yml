@@ -10,7 +10,8 @@
 
 - name: Check if rclone Docker plugin exists
   command: docker plugin list --format '{{"{{.Name}}"}}' 
-  register: plugin_info
+  register: installed_plugins
+  ignore_errors: yes
 
 - name: Install rclone docker plugin
   command: docker plugin install rclone/docker-volume-rclone:amd64 args="-v" --alias rclone --grant-all-permissions
