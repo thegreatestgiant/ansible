@@ -31,7 +31,7 @@
     
 - name: Test
   debug:
-    msg: {{ ansible_facts.ansible_version }}
+    msg: "{{ ansible_facts.ansible_version }}"
   when: ansible_facts.ansible_version is not defined
 
 - name: Install Ansible using pip3
