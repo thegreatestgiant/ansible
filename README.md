@@ -15,6 +15,17 @@ This is the command I currently use
 ANSIBLE_ASK_VAULT_PASS=True ansible-pull -U https://github.com/thegreatestgiant/ansible.git
 ```
 
+## Best Install
+```bash
+sudo apt install -y python3-pip
+pip install ansible-core
+```
+or
+```bash
+sudo apt install -y pipx
+pipx install ansible-core
+```
+
 # Contents of Vault files
 
 ## Location(s)
