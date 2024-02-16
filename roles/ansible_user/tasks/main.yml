@@ -32,6 +32,7 @@
 - name: Install Ansible using pip3
   pip:
     name: ansible
+  when: ansible_facts.ansible_version is not defined
 
 - name: Install cron job (ansible-pull)
   cron:
