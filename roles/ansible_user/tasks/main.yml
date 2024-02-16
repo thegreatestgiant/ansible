@@ -37,7 +37,7 @@
 - name: Install Ansible using pip3
   pip:
     name: ansible
-  when: ansible_check.rc != 0
+  when: ansible_check.rc == 0
 
 - name: Install cron job (ansible-pull)
   cron:
