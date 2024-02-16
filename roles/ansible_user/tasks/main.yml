@@ -28,6 +28,11 @@
   copy:
     src: ansible.cfg
     dest: /etc/ansible/ansible.cfg
+    
+- name: Test
+  debug:
+    msg: {{ ansible_facts.ansible_version }}
+  when: ansible_facts.ansible_version is not defined
 
 - name: Install Ansible using pip3
   pip:
