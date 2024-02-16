@@ -30,7 +30,7 @@
     dest: /etc/ansible/ansible.cfg
     
 - name: Check if Ansible is installed
-  command: command -v ansible
+  command: /bin/sh -c "command -v ansible"
   register: ansible_check
   ignore_errors: true
 
