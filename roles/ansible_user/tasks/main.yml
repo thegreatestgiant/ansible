@@ -31,13 +31,17 @@
     
 - name: Test
   debug:
-    msg: "{{ ansible_facts.ansible_version }}"
-  when: ansible_facts.ansible_version is not defined
+    msg: "{{ ansible_check }}"
+  when: "'ansible' not in ansible_check.stdout"
+  vars:
+    ansible_check: "{{ lookup('env','_') }}"
 
 - name: Install Ansible using pip3
   pip:
     name: ansible
-  when: ansible_facts.ansible_version is not defined
+  when: "'ansible' not in ansible_check.stdout"
+  vars:
+    ansible_check: "{{ lookup('env','_') }}"
 
 - name: Install cron job (ansible-pull)
   cron:
