@@ -5,6 +5,5 @@
     - docker.yml
 
 - name: Set TZ
-  timezone:
-    name: "America/New_York"
+  command: timedatectl set-timezone America/New_York
 
