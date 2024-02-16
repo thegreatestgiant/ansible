@@ -29,15 +29,15 @@
     src: ansible.cfg
     dest: /etc/ansible/ansible.cfg
     
-- name: Test
-  debug:
-    msg: "{{ ansible_check }}"
-  when: "'ansible' not in ansible_env._"
+- name: Check if Ansible is installed
+  command: command -v ansible
+  register: ansible_check
+  ignore_errors: true
 
 - name: Install Ansible using pip3
   pip:
     name: ansible
-  when: "'ansible' not in ansible_env._"
+  when: ansible_check.rc != 0
 
 - name: Install cron job (ansible-pull)
   cron:
