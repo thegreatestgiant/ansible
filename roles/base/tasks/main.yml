@@ -7,3 +7,16 @@
 - name: Set TZ
   command: timedatectl set-timezone America/New_York
 
+- name: Install NvChad
+  become_user: "{{ user.name }}"
+  git:
+    repo: 'https://github.com/NvChad/NvChad'
+    dest: "{{ user.home }}/.config/nvim"
+    depth: 1
+
+- name: Install My Config
+  become_user: "{{ user.name }}"
+  git:
+    repo: 'https://github.com/thegreatestgiant/NvChad-Config'
+    dest: "{{ user.home }}/.config/nvim/lua/custom"
+    depth: 1
