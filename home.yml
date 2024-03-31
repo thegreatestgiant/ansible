@@ -15,6 +15,7 @@
   roles:
     - start
     - sean_user
+    - services
 
   tasks:   
     - name: set hostname
@@ -26,6 +27,3 @@
         path: /etc/hosts
         regexp: '^127.0.0.1[[:space:]]+localhost'
         line: '127.0.0.1       Home localhost'
-
-  roles:
-    - services
