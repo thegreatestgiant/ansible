@@ -19,6 +19,7 @@
       - python3-passlib
       - ripgrep
       - python3-pip
+      - gcc
     state: present
   changed_when: False
 
