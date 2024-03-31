@@ -20,7 +20,7 @@
     
 - name: Move existing Nvim config
   become_user: "{{ user.name }}"
-  command: mv -rf "{{ user.home }}/.config/nvim" "{{ user.home }}/.config/nvim_backup_{{ ansible_date_time.date }}"
+  command: mv -f "{{ user.home }}/.config/nvim" "{{ user.home }}/.config/nvim_backup_{{ ansible_date_time.date }}"
   ignore_errors: yes
   
 - name: Install NvChad For My User
