@@ -7,15 +7,20 @@
 - name: Set TZ
   command: timedatectl set-timezone America/New_York
 
+- name: Move existing Nvim config
+  synchronize:
+    src: "{{ ansible_env.HOME }}/.config/nvim/"
+    dest: "{{ ansible_env.HOME }}/.config/nvim_backup_{{ ansible_date_time.date }}/"
+    delete: yes
+  ignore_errors: yes
+
 - name: Install NvChad
-  become_user: "{{ ansible_env.USER }}"
   git:
     repo: 'https://github.com/NvChad/starter'
     dest: "{{ ansible_env.HOME }}/.config/nvim"
     depth: 1
 
 - name: Install My Config
-  become_user: "{{ ansible_env.USER }}"
   git:
     repo: 'https://github.com/thegreatestgiant/NvChad-Config'
     dest: "{{ ansible_env.HOME }}/.config/nvim/lua/custom"
