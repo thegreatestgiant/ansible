@@ -8,7 +8,7 @@
   command: timedatectl set-timezone America/New_York
 
 - name: Move existing Nvim config
-  command: mv -f "{{ ansible_env.HOME }}/.config/nvim" "{{ ansible_env.HOME }}/.config/nvim_backup_{{ ansible_date_time.date }}"
+  command: mv -f "{{ ansible_env.HOME }}/.config/nvim" "{{ ansible_env.HOME }}/.config/nvim_backup_{{ ansible_date_time.date }}" && rm -rf "{{ ansible_env.HOME }}/.local/share/nvim"
   ignore_errors: yes
 
 - name: Install NvChad

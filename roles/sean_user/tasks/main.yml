@@ -17,10 +17,10 @@
     owner: root
     group: root
     mode: 0440
-    
+
 - name: Move existing Nvim config
   become_user: "{{ user.name }}"
-  command: mv -f "{{ user.home }}/.config/nvim" "{{ user.home }}/.config/nvim_backup_{{ ansible_date_time.date }}"
+  command: mv -f "{{ user.home }}/.config/nvim" "{{ user.home }}/.config/nvim_backup_{{ ansible_date_time.date }}" && rm -rf "{{ user.home }}/.local/share/nvim"
   ignore_errors: yes
   
 - name: Install NvChad For My User
