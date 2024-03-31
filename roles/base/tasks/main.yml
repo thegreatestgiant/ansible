@@ -18,5 +18,5 @@
   become_user: "{{ ansible_env.USER }}"
   git:
     repo: 'https://github.com/thegreatestgiant/NvChad-Config'
-    dest: "{{ ansible_env.home }}/.config/nvim/lua/custom"
+    dest: "{{ ansible_env.HOME }}/.config/nvim/lua/custom"
     depth: 1
