@@ -30,6 +30,11 @@
     dest: "{{ user.home }}/.config/nvim"
     depth: 1
 
+- name: Remove .git from NvChad
+  file:
+    path: "{{ user.home }}/.config/nvim/.git"
+    state: "absent"
+
 - name: Install My Config For My User
   become_user: "{{ user.name }}"
   git:
