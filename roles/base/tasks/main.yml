@@ -10,8 +10,8 @@
 - name: Install NvChad
   become_user: "{{ ansible_env.USER }}"
   git:
-    repo: 'https://github.com/NvChad/NvChad'
-    dest: "{{ user.home }}/.config/nvim"
+    repo: 'https://github.com/NvChad/starter'
+    dest: "{{ ansible_env.HOME }}/.config/nvim"
     depth: 1
 
 - name: Install My Config

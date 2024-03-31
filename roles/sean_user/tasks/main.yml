@@ -21,7 +21,7 @@
 - name: Install NvChad For My User
   become_user: "{{ user.name }}"
   git:
-    repo: 'https://github.com/NvChad/NvChad'
+    repo: 'https://github.com/NvChad/starter'
     dest: "{{ user.home }}/.config/nvim"
     depth: 1
 
