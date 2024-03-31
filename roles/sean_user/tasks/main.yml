@@ -26,20 +26,8 @@
 - name: Install NvChad For My User
   become_user: "{{ user.name }}"
   git:
-    repo: 'https://github.com/NvChad/starter'
-    dest: "{{ user.home }}/.config/nvim"
-    depth: 1
-
-- name: Remove .git from NvChad
-  file:
-    path: "{{ user.home }}/.config/nvim/.git"
-    state: "absent"
-
-- name: Install My Config For My User
-  become_user: "{{ user.name }}"
-  git:
     repo: 'https://github.com/thegreatestgiant/NvChad-Config'
-    dest: "{{ user.home }}/.config/nvim/lua/custom"
+    dest: "{{ user.home }}/.config/nvim"
     depth: 1
 
 - name: Add user to docker group
