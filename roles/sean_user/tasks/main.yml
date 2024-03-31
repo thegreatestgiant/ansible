@@ -20,7 +20,7 @@
     
 - name: Move existing Nvim config
   become_user: "{{ user.name }}"
-  synchronize:
+  ansible.posix.synchronize:
     src: "{{ user.home }}/.config/nvim/"
     dest: "{{ user.home }}/.config/nvim_backup_{{ ansible_date_time.date }}/"
     delete: yes
