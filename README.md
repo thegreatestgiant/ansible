@@ -15,6 +15,11 @@ This is the command I currently use
 ANSIBLE_ASK_VAULT_PASS=True ansible-pull -U https://github.com/thegreatestgiant/ansible.git
 ```
 
+And when I want to use a specific playbook
+```
+ANSIBLE_ASK_VAULT_PASS=True ansible-pull -U https://github.com/thegreatestgiant/ansible.git home.yml
+```
+
 ## Best Install
 ```bash
 sudo apt install -y python3-pip git
