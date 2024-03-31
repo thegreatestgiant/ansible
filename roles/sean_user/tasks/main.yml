@@ -17,3 +17,17 @@
     owner: root
     group: root
     mode: 0440
+
+- name: Install NvChad For My User
+  become_user: "{{ user.name }}"
+  git:
+    repo: 'https://github.com/NvChad/NvChad'
+    dest: "{{ user.home }}/.config/nvim"
+    depth: 1
+
+- name: Install My Config For My User
+  become_user: "{{ user.name }}"
+  git:
+    repo: 'https://github.com/thegreatestgiant/NvChad-Config'
+    dest: "{{ user.home }}/.config/nvim/lua/custom"
+    depth: 1
