@@ -8,7 +8,7 @@
   command: timedatectl set-timezone America/New_York
 
 - name: Move existing Nvim config
-  synchronize:
+  ansible.posix.synchronize:
     src: "{{ ansible_env.HOME }}/.config/nvim/"
     dest: "{{ ansible_env.HOME }}/.config/nvim_backup_{{ ansible_date_time.date }}/"
     delete: yes
