@@ -21,15 +21,16 @@ ANSIBLE_ASK_VAULT_PASS=True ansible-pull -U https://github.com/thegreatestgiant/
 ```
 
 ## Best Install
-```bash
-sudo apt install -y python3-pip git
-pip install ansible-core
-```
-or
+Try doing one of these two. For some OS's one works and the other doesn't.
 ```bash
 sudo apt install -y pipx git
 pipx install ansible-core
 ```
+```bash
+sudo apt install -y python3-pip git
+pip install ansible-core
+```
+An alternative is putting the IP address of your server in the inventory and letting the GitHub Action take care of everything
 
 # Contents of Vault files
 
