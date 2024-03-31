@@ -17,12 +17,12 @@ ANSIBLE_ASK_VAULT_PASS=True ansible-pull -U https://github.com/thegreatestgiant/
 
 ## Best Install
 ```bash
-sudo apt install -y python3-pip
+sudo apt install -y python3-pip git
 pip install ansible-core
 ```
 or
 ```bash
-sudo apt install -y pipx
+sudo apt install -y pipx git
 pipx install ansible-core
 ```
 
