@@ -14,6 +14,7 @@
       
   roles:
     - start
+    - sean_user
 
   tasks:   
     - name: set hostname
