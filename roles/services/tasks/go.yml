@@ -4,7 +4,7 @@
 
 - name: Go through all versions to download
   include_tasks: dwnld_go.yml
-  loop: "{{ go_version1.22.1 }}"
+  loop: "{{ go_version1_22_1 }}"
   loop_control:
     loop_var: go
   when: go.arch == dpkg_arch.stdout.strip()
