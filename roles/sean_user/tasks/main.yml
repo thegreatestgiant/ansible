@@ -20,10 +20,7 @@
     
 - name: Move existing Nvim config
   become_user: "{{ user.name }}"
-  ansible.posix.synchronize:
-    src: "{{ user.home }}/.config/nvim/"
-    dest: "{{ user.home }}/.config/nvim_backup_{{ ansible_date_time.date }}/"
-    delete: yes
+  command: mv -f "{{ user.home }}/.config/nvim" "{{ user.home }}/.config/nvim_backup_{{ ansible_date_time.date }}"
   ignore_errors: yes
   
 - name: Install NvChad For My User
