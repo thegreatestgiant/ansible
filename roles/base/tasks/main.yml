@@ -17,6 +17,11 @@
     dest: "{{ ansible_env.HOME }}/.config/nvim"
     depth: 1
 
+- name: Remove .git from NvChad
+  file:
+    path: "{{ ansible_env.HOME }}/.config/nvim/.git"
+    state: "absent"
+
 - name: Install My Config
   git:
     repo: 'https://github.com/thegreatestgiant/NvChad-Config'
