@@ -39,3 +39,9 @@
     repo: 'https://github.com/thegreatestgiant/NvChad-Config'
     dest: "{{ user.home }}/.config/nvim/lua/custom"
     depth: 1
+
+- name: Add user to docker group
+  user:
+    name: "{{ user.name }}"
+    groups: docker 
+    append: yes
