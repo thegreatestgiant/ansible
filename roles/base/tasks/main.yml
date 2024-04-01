@@ -13,6 +13,6 @@
 
 - name: Install NvChad
   git:
-    repo: 'https://github.com/thegreatestgiant/NvChad-Config'
+    repo: "https://github.com/thegreatestgiant/LazyVim"
     dest: "{{ ansible_env.HOME }}/.config/nvim"
     depth: 1

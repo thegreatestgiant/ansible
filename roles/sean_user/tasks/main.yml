@@ -22,16 +22,16 @@
   become_user: "{{ user.name }}"
   command: mv -f "{{ user.home }}/.config/nvim" "{{ user.home }}/.config/nvim_backup_{{ ansible_date_time.date }}" && rm -rf "{{ user.home }}/.local/share/nvim"
   ignore_errors: yes
-  
+
 - name: Install NvChad For My User
   become_user: "{{ user.name }}"
   git:
-    repo: 'https://github.com/thegreatestgiant/NvChad-Config'
+    repo: "https://github.com/thegreatestgiant/LazyVim"
     dest: "{{ user.home }}/.config/nvim"
     depth: 1
 
 - name: Add user to docker group
   user:
     name: "{{ user.name }}"
-    groups: docker 
+    groups: docker
     append: yes
