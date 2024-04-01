@@ -23,10 +23,10 @@
   command: mv -f "{{ user.home }}/.config/nvim" "{{ user.home }}/.config/nvim_backup_{{ ansible_date_time.date }}" && rm -rf "{{ user.home }}/.local/share/nvim"
   ignore_errors: yes
 
-- name: Install NvChad For My User
+- name: Install LazyVim For My User
   become_user: "{{ user.name }}"
   git:
-    repo: "https://github.com/thegreatestgiant/LazyVim"
+    repo: "https://github.com/thegreatestgiant/LazyVim.git"
     dest: "{{ user.home }}/.config/nvim"
     depth: 1
 
