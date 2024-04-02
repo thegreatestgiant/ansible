@@ -20,6 +20,6 @@
     - alias grep='grep --color=auto'
     - HISTTIMEFORMAT='%Y-%m-%d %T'
     - alias ncdir="cd ~/.config/nvim"
-    - alias ncf="nvim ~/.config/nvim/lua/custom/init.lua"
+    - alias ncf="nvim ~/.config/nvim/lua"
     - alias nv="nvim"
 
