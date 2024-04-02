@@ -8,5 +8,5 @@
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" && \
     nvm install 18
   args:
-    creates: "{{ user.home }}/.config/nvm/nvm.sh"
+    creates: "{{ user.home }}./nvm"
 
