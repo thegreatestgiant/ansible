@@ -1,0 +1,16 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  pre_tasks:
+    - name: Update Repo's
+      apt:
+        update_cache: yes 
+        upgrade: full
+        autoremove: yes 
+        autoclean: yes 
+      changed_when: no
+      
+  roles:
+    - start
+    - services
