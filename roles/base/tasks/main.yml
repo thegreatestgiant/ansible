@@ -13,6 +13,6 @@
 
 - name: Install LazyVim
   git:
-    repo: "https://github.com/thegreatestgiant/LazyVim.git"
+    repo: "https://github.com/thegreatestgiant/NvimConfig.git"
     dest: "{{ ansible_env.HOME }}/.config/nvim"
     depth: 1
