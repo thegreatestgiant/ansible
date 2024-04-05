@@ -17,9 +17,11 @@
       - wget
       - cron
       - python3-passlib
-      - ripgrep
       - python3-pip
+      - python3-venv
+      - ripgrep
       - gcc
+      - fd-find
     state: present
   changed_when: False
 
